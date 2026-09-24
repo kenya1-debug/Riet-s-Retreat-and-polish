@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b0b0a;
+}
+
+/* Thin gold rule used as a section divider instead of cards/shadows */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a24b66, transparent);
+}
+
+/* Shared admin form control — used across every dashboard CRUD form */
+@layer components {
+  .input {
+    background: transparent;
+    border: 1px solid rgba(201, 162, 75, 0.3);
+    color: #f3ecd9;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.875rem;
+  }
+  .input:focus {
+    border-color: #c9a24b;
+    outline: none;
+  }
+}
+
+/* Visible keyboard focus, kept gold to match the palette */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #c9a24b;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
