@@ -91,6 +91,21 @@ create table if not exists public.gallery_images (
   created_at timestamptz not null default now()
 );
 
+-- ---------- Storage bucket for gallery photos (uploaded directly from the
+-- admin dashboard, instead of pasting an external URL) ----------
+insert into storage.buckets (id, name, public)
+values ('gallery', 'gallery', true)
+on conflict (id) do nothing;
+
+create policy "public read gallery objects" on storage.objects
+  for select using (bucket_id = 'gallery');
+create policy "staff upload gallery objects" on storage.objects
+  for insert with check (bucket_id = 'gallery' and auth.role() = 'authenticated');
+create policy "staff update gallery objects" on storage.objects
+  for update using (bucket_id = 'gallery' and auth.role() = 'authenticated');
+create policy "staff delete gallery objects" on storage.objects
+  for delete using (bucket_id = 'gallery' and auth.role() = 'authenticated');
+
 -- ---------- testimonials ----------
 create table if not exists public.testimonials (
   id uuid primary key default uuid_generate_v4(),

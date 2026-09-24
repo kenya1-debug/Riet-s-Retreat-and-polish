@@ -15,14 +15,12 @@ export default function AboutPage() {
           <p>
             Riet&rsquo;s Retreat and Polish opened its doors in {SITE_LOCATION} with a
             simple aim: bring salon and barber work of a genuinely high standard to
-            Kabarnet, without losing the warmth of a neighbourhood shop. [Editable —
-            replace this paragraph with the salon&rsquo;s real founding story.]
+            Kabarnet, without losing the warmth of a neighbourhood shop.
           </p>
           <p>
             Every cut, style, treatment and manicure is carried out with care by a
             small team who know their craft — whether you visit us in the chair or
-            invite us to your home for a house call. [Editable — describe the team,
-            training, or specialties here.]
+            invite us to your home for a house call.
           </p>
           <p>
             The salon has built a loyal following on TikTok as{" "}

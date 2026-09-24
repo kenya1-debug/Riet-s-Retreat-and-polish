@@ -46,13 +46,6 @@ export default async function GalleryPage() {
                 />
               ))}
         </div>
-
-        {showPlaceholders && (
-          <p className="mt-6 font-sans text-xs text-cream/40">
-            Placeholder tiles — real photos can be added from the admin dashboard&rsquo;s
-            content section.
-          </p>
-        )}
       </div>
     </section>
   );

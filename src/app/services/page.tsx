@@ -58,7 +58,7 @@ export default async function ServicesPage() {
 
           {services.length === 0 && (
             <p className="font-body text-cream/60">
-              Services will appear here once added from the admin dashboard.
+              Services will appear here shortly — check back soon.
             </p>
           )}
         </div>

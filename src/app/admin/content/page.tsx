@@ -173,6 +173,9 @@ function Field({ label, value, onChange }: { label: string; value: string; onCha
 function GalleryEditor() {
   const supabase = createClient();
   const [images, setImages] = useState<GalleryImage[]>([]);
+  const [caption, setCaption] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState("");
 
   async function load() {
     const { data } = await supabase.from("gallery_images").select("*").order("sort_order");
@@ -183,15 +186,43 @@ function GalleryEditor() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function addImage(e: FormEvent<HTMLFormElement>) {
+  async function uploadImage(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
+    setError("");
+
+    const form = e.currentTarget;
+    const fileInput = form.elements.namedItem("photo") as HTMLInputElement;
+    const file = fileInput.files?.[0];
+    if (!file) {
+      setError("Choose a photo first.");
+      return;
+    }
+
+    setUploading(true);
+    const path = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
+
+    const { error: uploadError } = await supabase.storage.from("gallery").upload(path, file, {
+      cacheControl: "3600",
+      upsert: false,
+    });
+
+    if (uploadError) {
+      setError("Upload failed. Please try again.");
+      setUploading(false);
+      return;
+    }
+
+    const { data: publicUrlData } = supabase.storage.from("gallery").getPublicUrl(path);
+
     await supabase.from("gallery_images").insert({
-      image_url: String(form.get("image_url")),
-      caption: String(form.get("caption") || ""),
+      image_url: publicUrlData.publicUrl,
+      caption,
       sort_order: images.length,
     });
-    (e.target as HTMLFormElement).reset();
+
+    form.reset();
+    setCaption("");
+    setUploading(false);
     load();
   }
 
@@ -209,13 +240,27 @@ function GalleryEditor() {
     <section>
       <h2 className="font-display text-2xl text-gold">Gallery Images</h2>
       <p className="mt-1 font-sans text-sm text-cream/50">
-        Paste an image URL (e.g. uploaded to Supabase Storage) and an optional caption.
+        Upload a photo directly from your device or phone&rsquo;s gallery.
       </p>
-      <form onSubmit={addImage} className="mt-4 grid gap-4 border border-gold/15 bg-ink p-6 sm:grid-cols-4">
-        <input name="image_url" placeholder="Image URL" required className="input sm:col-span-2" />
-        <input name="caption" placeholder="Caption (optional)" className="input" />
-        <button className="bg-gold px-4 py-3 font-sans text-sm text-ink hover:bg-gold-soft">Add image</button>
+      <form onSubmit={uploadImage} className="mt-4 grid gap-4 border border-gold/15 bg-ink p-6 sm:grid-cols-4">
+        <input
+          name="photo"
+          type="file"
+          accept="image/*"
+          required
+          className="input sm:col-span-2 file:mr-3 file:border-0 file:bg-gold file:px-3 file:py-1.5 file:font-sans file:text-xs file:text-ink"
+        />
+        <input
+          value={caption}
+          onChange={(e) => setCaption(e.target.value)}
+          placeholder="Caption (optional)"
+          className="input"
+        />
+        <button disabled={uploading} className="bg-gold px-4 py-3 font-sans text-sm text-ink hover:bg-gold-soft disabled:opacity-60">
+          {uploading ? "Uploading..." : "Upload photo"}
+        </button>
       </form>
+      {error && <p className="mt-2 font-sans text-sm text-red-400">{error}</p>}
 
       <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {images.map((img) => (
