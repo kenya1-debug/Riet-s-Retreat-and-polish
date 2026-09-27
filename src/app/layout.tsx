@@ -27,9 +27,9 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Riet's Retreat and Polish — Salon & Barber, Kabarnet",
+  title: "Riet's Retreat and Polish — Salon & Barber, Juja",
   description:
-    "Riet's Retreat and Polish is Kabarnet's premium salon and barber shop for hair, grooming and nail care — in-salon or at your home. Book online today.",
+    "Riet's Retreat and Polish is Juja's premium salon and barber shop for hair, grooming and nail care — in-salon or at your home. Book online today.",
 };
 
 export default async function RootLayout({

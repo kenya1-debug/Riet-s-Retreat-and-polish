@@ -15,7 +15,7 @@ export default function AboutPage() {
           <p>
             Riet&rsquo;s Retreat and Polish opened its doors in {SITE_LOCATION} with a
             simple aim: bring salon and barber work of a genuinely high standard to
-            Kabarnet, without losing the warmth of a neighbourhood shop.
+            Juja, without losing the warmth of a neighbourhood shop.
           </p>
           <p>
             Every cut, style, treatment and manicure is carried out with care by a

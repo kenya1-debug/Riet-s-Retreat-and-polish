@@ -1,5 +1,5 @@
 export const SITE_NAME = "Riet's Retreat and Polish";
-export const SITE_LOCATION = "Kabarnet, Baringo County, Kenya";
+export const SITE_LOCATION = "Juja Modern Hospital (Sewage), Juja, Kiambu County, Kenya";
 export const TIKTOK_URL = "https://www.tiktok.com/@jayharriet8";
 export const TIKTOK_HANDLE = "@jayharriet8";
 

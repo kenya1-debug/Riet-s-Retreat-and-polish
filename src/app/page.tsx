@@ -36,7 +36,7 @@ export default async function HomePage() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-gold/20 bg-ink">
         <div className="mx-auto flex max-w-4xl flex-col items-center px-6 py-28 text-center sm:py-36">
-          <p className="font-sans text-xs tracking-widest2 text-gold/80">Kabarnet, Baringo County</p>
+          <p className="font-sans text-xs tracking-widest2 text-gold/80">Juja, Kiambu County</p>
           <h1 className="mt-6 font-display text-4xl leading-tight text-cream sm:text-6xl">
             {hero.tagline}
           </h1>

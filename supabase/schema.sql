@@ -197,11 +197,11 @@ insert into public.site_settings (key, value) values
      "phone": "+254 7XX XXX XXX",
      "whatsapp": "+254 7XX XXX XXX",
      "email": "hello@rietsretreat.co.ke",
-     "address": "Kabarnet, Baringo County, Kenya",
+     "address": "Juja Modern Hospital (Sewage), Juja, Kiambu County, Kenya",
      "tiktok": "https://www.tiktok.com/@jayharriet8"
    }'::jsonb),
   ('hero', '{
-     "tagline": "Kabarnet''s home of retreat, refinement and polish.",
+     "tagline": "Juja''s home of retreat, refinement and polish.",
      "subtext": "Hair, grooming and nail care crafted with care — in our chair, or at your door."
    }'::jsonb)
 on conflict (key) do nothing;
@@ -225,7 +225,7 @@ insert into public.staff (full_name, role, phone) values
 on conflict do nothing;
 
 insert into public.testimonials (customer_name, quote, rating, sort_order) values
-  ('Cherop A.', 'The best braiding experience I have had in Kabarnet. Neat, gentle and so patient.', 5, 1),
+  ('Cherop A.', 'The best braiding experience I have had in Juja. Neat, gentle and so patient.', 5, 1),
   ('Kiprop M.', 'Clean cut every single time. The shop feels upscale but the prices are fair.', 5, 2),
   ('Naliaka W.', 'They came to my home for a full bridal party — everyone looked flawless.', 5, 3)
 on conflict do nothing;

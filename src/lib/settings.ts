@@ -11,7 +11,7 @@ export async function getSiteSettings() {
     hours: DEFAULT_HOURS as SiteHours,
     contact: DEFAULT_CONTACT as SiteContact,
     hero: {
-      tagline: "Kabarnet's home of retreat, refinement and polish.",
+      tagline: "Juja's home of retreat, refinement and polish.",
       subtext:
         "Hair, grooming and nail care crafted with care — in our chair, or at your door.",
     } as SiteHero,

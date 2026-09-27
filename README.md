@@ -1,7 +1,7 @@
 # Riet's Retreat and Polish — Website & Admin Dashboard
 
 A production website and password-protected admin dashboard for **Riet's Retreat and
-Polish**, a salon/barber shop in Kabarnet, Baringo County, Kenya.
+Polish**, a salon/barber shop in Juja, Kiambu County, Kenya.
 
 Built with **Next.js 14** (App Router, TypeScript, Tailwind) and **Supabase**
 (Postgres database + Auth). Deploys to **Vercel**, code lives on **GitHub** — exactly
