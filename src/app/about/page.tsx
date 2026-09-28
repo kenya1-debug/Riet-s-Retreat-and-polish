@@ -13,7 +13,7 @@ export default function AboutPage() {
 
         <div className="mt-10 space-y-6 font-body text-lg leading-relaxed text-cream/75">
           <p>
-            Riet&rsquo;s Retreat and Polish opened its doors in {SITE_LOCATION} with a
+            Riet&rsquo;s Retreat and Polish opened its doors in Juja with a
             simple aim: bring salon and barber work of a genuinely high standard to
             Juja, without losing the warmth of a neighbourhood shop.
           </p>
